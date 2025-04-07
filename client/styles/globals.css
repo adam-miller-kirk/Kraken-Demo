@@ -30,6 +30,13 @@ button {
   border-radius: var(--space-half);
   border: none;
   font-weight: 600;
+  cursor: pointer;
+
+  &:disabled {
+    color: var(--purpleHaze);
+    background: var(--plum);
+    cursor: not-allowed;
+  }
 }
 
 h2,
@@ -111,7 +118,13 @@ p {
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 0.1rem;
+        gap: 0.2rem;
+      }
+
+      h3 {
+        text-align: center;
+        margin: 0;
+        min-width: 1rem;
       }
 
       button {
