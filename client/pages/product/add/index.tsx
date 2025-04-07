@@ -20,7 +20,7 @@ function AddProduct({ price }: { price: number }) {
             >
               -
             </button>
-            <h3>{quantity}</h3>
+            <h3 title="Current quantity">{quantity}</h3>
             <button onClick={() => changeQuantity(1)}>+</button>
           </div>
         </div>
