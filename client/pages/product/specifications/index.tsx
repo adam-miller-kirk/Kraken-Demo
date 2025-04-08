@@ -1,13 +1,13 @@
 import { Fragment } from "react";
-type SpecsProps = {
-  specs: {
-    brand?: string;
-    weight?: string | number;
-    dimensions?: string;
-    model_code?: string;
-    colour?: string;
+import type { Product } from "../../../types/products";
+
+type BaseSpecs = Pick<Product, "brand" | "weight" | "model_code" | "colour">;
+
+export interface SpecsProps {
+  specs: BaseSpecs & {
+    dimensions: string;
   };
-};
+}
 
 const specLabels: Record<keyof SpecsProps["specs"], string> = {
   brand: "Brand",

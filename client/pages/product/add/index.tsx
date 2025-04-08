@@ -1,6 +1,8 @@
 import { useState } from "react";
+import type { Product } from "../../../types/products";
+type ProductPrice = Pick<Product, "price">;
 
-function AddProduct({ price }: { price: number }) {
+function AddProduct({ price }: ProductPrice) {
   const [quantity, setQuantity] = useState(1);
 
   const changeQuantity = (delta: number) => {
