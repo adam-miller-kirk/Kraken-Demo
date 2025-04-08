@@ -6,6 +6,9 @@
   --purpleHaze: #a49fc8;
   --siphon: #100030;
   --sohoLights: #f050f8;
+
+  --space-half: 0.5rem;
+  --space-full: 1rem;
 }
 
 html,
@@ -20,6 +23,40 @@ body {
   background: var(--siphon);
 }
 
+button {
+  height: 2.5rem;
+  width: 100%;
+  background: var(--sohoLights);
+  border-radius: var(--space-half);
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:disabled {
+    color: var(--purpleHaze);
+    background: var(--plum);
+    cursor: not-allowed;
+  }
+}
+
+h2,
+h3,
+p {
+  font-weight: 400;
+  margin: var(--space-half);
+}
+
+h2,
+h3 {
+  color: var(--ice);
+}
+
+p {
+  font-size: x-small;
+  line-height: var(--space-full);
+  color: var(--purpleHaze);
+}
+
 .home {
   display: flex;
   flex-direction: column;
@@ -27,4 +64,118 @@ body {
   justify-content: center;
   height: 100vh;
   margin: 0 auto;
+}
+
+.product {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 16.5rem;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    .basket {
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      text-align: center;
+      gap: var(--space-half);
+
+      .basket-count {
+        display: flex;
+        align-items: center;
+        min-width: 2rem;
+      }
+    }
+  }
+
+  .image {
+    border-radius: var(--space-full);
+  }
+
+  .addProduct {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0 var(--space-half) var(--space-full);
+    gap: var(--space-half);
+
+    .details {
+      display: flex;
+      justify-content: space-between;
+
+      .price {
+        display: flex;
+        align-items: end;
+        margin: 0;
+      }
+
+      .addControls {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: x-small;
+
+        .title {
+          display: flex;
+          justify-content: center;
+          margin: 0;
+        }
+
+        .controls {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 0.2rem;
+        }
+
+        h3 {
+          text-align: center;
+          margin: 0;
+          min-width: var(--space-full);
+        }
+
+        button {
+          height: 1.5rem;
+          width: 1.5rem;
+        }
+      }
+    }
+  }
+
+  .description {
+    padding: var(--space-half);
+    background: var(--hemocyanin);
+    width: 100%;
+  }
+
+  .specifications {
+    padding: var(--space-half);
+    width: 100%;
+
+    .specGrid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      p {
+        margin: 0.25rem;
+      }
+    }
+  }
+
+  .disclaimer {
+    padding: var(--space-half);
+    background: var(--hemocyanin);
+    width: 100%;
+
+    p {
+      font-size: 0.43rem;
+      line-height: 0.6rem;
+    }
+  }
 }
