@@ -1,7 +1,11 @@
-function Error(error) {
+type ErrorProps = {
+  error: Error;
+};
+
+function Error({ error }: ErrorProps) {
   return (
     <div>
-      <p>{`Error: ${error}`}</p>
+      <p>{`Error: ${error.message}`}</p>
     </div>
   );
 }

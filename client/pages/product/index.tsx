@@ -2,15 +2,17 @@
 
 import { useState } from "react";
 import Image from "next/image";
+
 import useProduct from "../../hooks/useProduct";
 import Loading from "../../components/loading";
 import Error from "../../components/error";
+
 import Header from "./title";
+import ProductName from "./name";
 import AddProduct from "./add";
 import Description from "./description";
-import Disclaimer from "./disclaimer";
 import Specifications from "./specifications";
-import ProductName from "./name";
+import Disclaimer from "./disclaimer";
 
 export default function Product() {
   const { product, loading, error } = useProduct({ productId: 1 });
