@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ProductInput, Product } from "../types/products";
+import { ProductInput, Product, ProductSchema } from "../types/products";
 
 export default function useProduct({ productId }: ProductInput) {
   const [product, setProduct] = useState<Product | null>(null);
@@ -11,7 +11,8 @@ export default function useProduct({ productId }: ProductInput) {
       try {
         const res = await fetch("/api/products");
         const data = await res.json();
-        const found = data.find((p: any) => p.id === productId);
+        const validated = ProductSchema.array().parse(data);
+        const found = validated.find((p) => p.id === productId);
         setProduct(found);
       } catch (err) {
         setError(err);
