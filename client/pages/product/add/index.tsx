@@ -1,8 +1,12 @@
 import { useState } from "react";
 import type { Product } from "../../../types/products";
-type ProductPrice = Pick<Product, "price">;
 
-function AddProduct({ price }: ProductPrice) {
+type ProductPrice = Pick<Product, "price">;
+type AddProductProps = ProductPrice & {
+  onAddToCart: (quantity: number) => void;
+};
+
+function AddProduct({ price, onAddToCart }: AddProductProps) {
   const [quantity, setQuantity] = useState(1);
 
   const changeQuantity = (delta: number) => {
@@ -27,7 +31,7 @@ function AddProduct({ price }: ProductPrice) {
           </div>
         </div>
       </div>
-      <button>Add to cart</button>
+      <button onClick={() => onAddToCart(quantity)}>Add to cart</button>
     </div>
   );
 }

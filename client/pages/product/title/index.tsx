@@ -1,6 +1,10 @@
 import Image from "next/image";
 
-function Header() {
+type HeaderProps = {
+  basketCount: number;
+};
+
+function Header({ basketCount }: HeaderProps) {
   return (
     <div className="header">
       <Image
@@ -9,7 +13,14 @@ function Header() {
         width={120}
         height={50}
       />
-      <Image src="/basket.svg" alt="Basket Icon" width={20} height={20} />
+      <div className="basket">
+        <Image src="/basket.svg" alt="Basket Icon" width={20} height={20} />
+        {basketCount > 0 && (
+          <span title="Basket items" className="basket-count">
+            {basketCount}
+          </span>
+        )}
+      </div>
     </div>
   );
 }

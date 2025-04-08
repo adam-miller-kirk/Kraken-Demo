@@ -1,4 +1,6 @@
 "use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import useProduct from "../../hooks/useProduct";
 import Loading from "../../components/loading";
@@ -12,6 +14,7 @@ import ProductName from "./name";
 
 export default function Product() {
   const { product, loading, error } = useProduct({ productId: 1 });
+  const [basket, setBasket] = useState<{ id: number; quantity: number }[]>([]);
 
   if (loading) return <Loading />;
   if (error) return <Error error={error} />;
@@ -27,9 +30,26 @@ export default function Product() {
     colour,
   };
 
+  const addToCart = (quantity: number) => {
+    setBasket((prev) => {
+      const existing = prev.find((item) => item.id === product.id);
+      if (existing) {
+        return prev.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + quantity }
+            : item
+        );
+      } else {
+        return [...prev, { id: product.id, quantity }];
+      }
+    });
+  };
+
   return (
     <div className="product">
-      <Header />
+      <Header
+        basketCount={basket.reduce((sum, item) => sum + item.quantity, 0)}
+      />
       <Image
         className="image"
         src="/philips-plumen.jpg"
@@ -42,7 +62,7 @@ export default function Product() {
         power={product.power}
         quantity={product.quantity}
       />
-      <AddProduct price={product.price} />
+      <AddProduct price={product.price} onAddToCart={addToCart} />
       <Description description={product.description} />
       <Specifications specifications={specifications} />
       <Disclaimer />
