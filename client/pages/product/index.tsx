@@ -24,7 +24,7 @@ export default function Product() {
 
   const { brand, weight, height, width, length, model_code, colour } = product;
 
-  const specifications = {
+  const specs = {
     brand,
     weight,
     dimensions: `${height} x ${width} x ${length}`,
@@ -66,7 +66,7 @@ export default function Product() {
       />
       <AddProduct price={product.price} onAddToCart={addToCart} />
       <Description description={product.description} />
-      <Specifications specifications={specifications} />
+      <Specifications specs={specs} />
       <Disclaimer />
     </div>
   );

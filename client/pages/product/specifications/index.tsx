@@ -17,13 +17,13 @@ const specLabels: Record<keyof SpecsProps["specs"], string> = {
   colour: "Colour",
 };
 
-function Specifications({ specifications }: { specifications: any }) {
+function Specifications({ specs }: SpecsProps) {
   return (
     <div className="specifications">
       <h3>Specifications</h3>
 
       <div className="specGrid">
-        {Object.entries(specifications).map(([key, value]) => {
+        {Object.entries(specs).map(([key, value]) => {
           if (!value) return null;
           return (
             <Fragment key={key}>
